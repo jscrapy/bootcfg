@@ -1,37 +1,30 @@
-package cn.chinatelecom;
+package cn.chinatelecom.core;
 
-import cn.chinatelecom.core.Sayhello;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * springboot 测试例子
  * Created by cxu on 2017/2/28.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = XxxTest.class)
+@SpringApplicationConfiguration(classes = AppTest.class)
 @SpringBootApplication
-//@TestPropertySource("classpath:db.properties")
-public class XxxTest {
-
-
-
+@TestPropertySource("classpath:application-mybeantest.properties")
+public class AppTest {
     @Autowired
-    protected Sayhello sayhello; //应该是test
+    private Mybean mybean;
 
-    /**
-     *
-     */
     @Test
     public void test() {
-        String sayString = sayhello.sayhello();
-        assertEquals("hello test", sayString);
+        String name = mybean.getName();
+        assertEquals("mybean-test", name);
     }
 
 }

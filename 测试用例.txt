@@ -10,6 +10,10 @@ java -Dname=jon core/target/bootconfigtest-exec.jar
 # 激活profile
 java  core/target/bootconfigtest-exec.jar --spring.profiles.active=dev
 
+application.perperties
+application-${}.perperties  ====> application-dev.perperties
+
+
 # 从jar/war外部加载配置
 java  core/target/bootconfigtest-exec.jar --spring.config.location=file:E:/
 
