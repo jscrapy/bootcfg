@@ -1,0 +1,27 @@
+# 默认从/config下加载application.properties
+java -jar core/target/bootconfigtest-exec.jar
+
+# 修改默认配置文件名字（不包含.properties后缀)
+java -jar core/target/bootconfigtest-exec.jar --spring.config.name=apphahah
+
+# -Dname=xxx覆盖配置文件
+java -Dname=jon core/target/bootconfigtest-exec.jar
+
+# 激活profile
+java  core/target/bootconfigtest-exec.jar --spring.profiles.active=dev
+
+# 从jar/war外部加载配置
+java  core/target/bootconfigtest-exec.jar --spring.config.location=file:E:/
+
+# @PropertySource 的低优先级
+java -jar core/target/bootconfigtest-exec.jar --spring.config.name=empty
+
+# web覆盖
+java -jar web/target/bootconfigtest-exec.jar
+
+最佳实践：
+1，所有配置从应用层(web)传递下来。
+2，core, service等只在test/resources里写配置文件，并且值经过maven资源过滤
+3，生产环境启动时使用--spring.config.location加载外部的配置文件
+4，web层位置一个大的配置文件
+
