@@ -10,9 +10,11 @@ import org.springframework.stereotype.Component;
 public class Mybean {
     @Value("${name}")
     private String name;
+    @Value("${server.context-path}")
+    private String contentPath;
 
     public String getName() {
-        return name;
+        return name + contentPath;
     }
 
     public void setName(String name) {

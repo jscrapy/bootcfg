@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = XxxTest.class)
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"", ""})
 @TestPropertySource("classpath:db.properties")
 public class PropertySourceTest extends XxxTest{
 
